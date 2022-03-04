@@ -43,12 +43,13 @@ namespace addressBook
 
             // Create an AddressBook and add some contacts to it
             AddressBook addressBook = new AddressBook();
+
             addressBook.AddContact(bob);
             addressBook.AddContact(sue);
             addressBook.AddContact(juan);
 
             // Try to addd a contact a second time
-            addressBook.AddContact(sue);
+            //addressBook.AddContact(sue);
 
 
             // Create a list of emails that match our Contacts
@@ -65,12 +66,22 @@ namespace addressBook
             //  Search the AddressBook by email and print the information about each Contact
             foreach (string email in emails)
             {
-                Contact contact = addressBook.GetByEmail(email);
-                Console.WriteLine("----------------------------");
-                Console.WriteLine($"Name: {contact.FullName}");
-                Console.WriteLine($"Email: {contact.Email}");
-                Console.WriteLine($"Address: {contact.Address}");
+                try
+                {
+                    Contact contact = addressBook.GetByEmail(email);
+                    Console.WriteLine("----------------------------");
+                    //Console.WriteLine($"Name: {contact.FullName}");
+                    Console.WriteLine($"Name: {contact.FirstName}");
+                    Console.WriteLine($"Email: {contact.Email}");
+                    Console.WriteLine($"Address: {contact.Address}");
+                }
+                catch (KeyNotFoundException ex)
+                {
+                    Console.WriteLine($"only use emails that exist: {ex}");
+                }
             }
+            // exception being thrown on 68 because email doesnt match
+            //figure out how to initialize fullname
         }
     }
 }
