@@ -70,7 +70,7 @@ namespace addressBook
                 {
                     Contact contact = addressBook.GetByEmail(email);
                     Console.WriteLine("----------------------------");
-                    //Console.WriteLine($"Name: {contact.FullName}");
+                    Console.WriteLine($"Name: {contact.FullName}");
                     Console.WriteLine($"Name: {contact.FirstName}");
                     Console.WriteLine($"Email: {contact.Email}");
                     Console.WriteLine($"Address: {contact.Address}");
